@@ -15,6 +15,28 @@
             var form = document.getElementById("answer-form-" + index);
             form.style.display = form.style.display === "none" ? "block" : "none";
         }
+        document.addEventListener('DOMContentLoaded', function() {
+            var xhr = new XMLHttpRequest();
+            xhr.open('GET', '/kakao/list', true); // '/kakao/friends'로 변경 가능
+            xhr.onload = function() {
+                if (xhr.status === 200) {
+                    var friendList = JSON.parse(xhr.responseText);
+                    displayFriends(friendList);
+                } else {
+                    console.log("친구 목록을 불러오는데 실패했습니다.");
+                }
+            };
+            xhr.send();
+        });
+
+        function displayFriends(friendList) {
+            var friendListDiv = document.getElementById('friendList');
+            friendList.forEach(function(friend) {
+                var div = document.createElement('div');
+                div.textContent = friend.nickname; // 친구 정보 표시
+                friendListDiv.appendChild(div);
+            });
+        }
     </script>
 </head>
 <body>
@@ -41,7 +63,7 @@
             %>
         </div>
         <div class ="profile">
-            <button class="quiz" onclick="location.href='/quiz';">
+            <button class="quiz" onclick="location.href='/quiz/${user.email}/list';">
                 <img src="../../../resources/assets/logo.png"/>
                 <div>Quiz?</div>
             </button>
@@ -54,10 +76,19 @@
                 <div class="birth">짜파게티 먹고싶다.</div>
             </div>
             <button class = "ans_complete">답변완료</button>
-            <button class = "new_question">새 질문</button>
+            <div id="friendList" style="display: none;">
+                <!-- AJAX를 통해 불러온 친구 목록이 여기에 표시됩니다 -->
+            </div>
+            <button class="new_question" onclick="toggleFriendList()">친구</button>
+            <script>
+                function toggleFriendList() {
+                    var friendListDiv = document.getElementById("friendList");
+                    friendListDiv.style.display = friendListDiv.style.display === "none" ? "block" : "none";
+                }
+            </script>
         </div>
         <%
-            if(owner){
+            if(!owner){
         %>
         <div class="new_contexnt">
             <form id="questionForm" action="/question/ask" method="post">

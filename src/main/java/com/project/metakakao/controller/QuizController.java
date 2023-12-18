@@ -37,7 +37,6 @@ public class QuizController extends HttpServlet {
 
     private final QuizService quizService;
     private final KakaoService kakaoService;
-
     @GetMapping("/game/{mid}/{qno}")
     public String quizGame(@PathVariable("mid") String mid, @PathVariable("qno") Long quizNo, Model model) {
         // mid == mid인 회원의 quizNo == qNo인 quiz를 조회

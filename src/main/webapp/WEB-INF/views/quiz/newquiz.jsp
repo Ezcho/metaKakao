@@ -15,8 +15,5 @@
     </div>
     <div class="right"></div>
 </div>
-
-
-
 </body>
 </html>

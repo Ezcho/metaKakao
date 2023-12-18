@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import javax.servlet.http.HttpServletRequest;
+
 @Controller
 public class QuestionController {
     @Autowired
@@ -16,21 +18,25 @@ public class QuestionController {
     @Autowired
     private AnswerService answerService;
     @PostMapping("/question/ask")
-    public String submitQuestionForm(@ModelAttribute QuestionDTO questionDTO) {
+    public String submitQuestionForm(@ModelAttribute QuestionDTO questionDTO, HttpServletRequest request) {
         questionService.saveQuestion(questionDTO);
-        System.out.println("Question생성");
-        return "redirect:/member/2";
+        String referer = request.getHeader("Referer");
+        return "redirect:" + (referer != null ? referer : "/member/2");
     }
+
     @PostMapping("/question/delete")
-    public String deleteQuestion(@RequestParam("questionId") Long questionId) {
+    public String deleteQuestion(@RequestParam("questionId") Long questionId, HttpServletRequest request) {
         questionService.deleteQuestion(questionId);
-        System.out.println("Question 삭제됨");
-        return "redirect:/member/2"; // 삭제 후 리디렉션할 페이지 (멤버 프로필 페이지 등)
+        String referer = request.getHeader("Referer");
+        return "redirect:" + (referer != null ? referer : "/member/2");
     }
+
     @PostMapping("/question/answer")
     public String submitAnswer(@RequestParam("questionId") Long questionId,
-                               @RequestParam("answerContent") String answerContent) {
+                               @RequestParam("answerContent") String answerContent,
+                               HttpServletRequest request) {
         answerService.saveAnswer(questionId, answerContent);
-        return "redirect:/member/2"; // 답변 제출 후 리디렉션할 페이지
+        String referer = request.getHeader("Referer");
+        return "redirect:" + (referer != null ? referer : "/member/2");
     }
 }

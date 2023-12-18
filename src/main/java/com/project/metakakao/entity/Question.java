@@ -27,7 +27,7 @@ public class Question {
     @JsonBackReference
     private Member host; // 질문 받는 사람
 
-    @OneToOne(mappedBy = "question", cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)
+    @OneToOne(mappedBy = "question", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private Answer answer; // 연관된 답변
 
     private int status; // 답변 완료: 1, 미응답: 0
