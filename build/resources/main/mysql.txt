@@ -1,0 +1,48 @@
+
+spring.mvc.view.prefix=/WEB-INF/views/
+spring.mvc.view.suffix=.jsp
+
+spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
+spring.datasource.url=jdbc:mysql://localhost:3306/Metakakao
+spring.datasource.username=root
+spring.datasource.password=kkddk464
+
+spring.jpa.hibernate.ddl-auto=update
+spring.jpa.show-sql=true
+
+spring.jpa.properties.hibernate.format_sql= true
+spring.jpa.properties.hibernate.show_sql=true
+
+
+spring.main.allow-bean-definition-overriding=true
+spring.security.oauth2.client.registration.kakao.client-id=cc5e87764c5433be4d533a6ec97a0263
+spring.security.oauth2.client.registration.kakao.redirect_uri=http://localhost:8080/kakao/redirect
+spring.security.oauth2.client.registration.kakao.client-secret=VYnj0CXiANqBtXFBU5dfpe8QXR7LORfJ
+spring.security.oauth2.client.registration.kakao.scope=profile_nickname, profile_image
+
+logging.level.org.springframework=info
+logging.level.org.zercok=debug
+logging.level.org.springframework.security=trace
+
+
+dependencies {
+    implementation 'org.springframework.boot:spring-boot-starter-data-jpa'  //
+    implementation 'org.springframework.boot:spring-boot-starter-web'
+    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation 'javax.servlet:jstl'
+    implementation "org.apache.tomcat.embed:tomcat-embed-jasper"
+    implementation 'org.springframework.boot:spring-boot-starter-security'  //security
+    implementation 'org.springframework.boot:spring-boot-starter-oauth2-client' //OAUTH2.0
+    compileOnly 'org.projectlombok:lombok'
+    developmentOnly 'org.springframework.boot:spring-boot-devtools'
+    implementation 'org.modelmapper:modelmapper:3.1.0'
+    //runtimeOnly 'org.mariadb.jdbc:mariadb-java-client'
+    annotationProcessor 'org.projectlombok:lombok'
+
+    implementation 'com.googlecode.json-simple:json-simple:1.1.1' //JsonParser사용
+
+    implementation 'mysql:mysql-connector-java:8.0.33'    //mysql만 사용시
+    runtimeOnly 'mysql:mysql-connector-java'//mysql만 사용시
+}
+
+mysql 만 빌드할때 돌릴것

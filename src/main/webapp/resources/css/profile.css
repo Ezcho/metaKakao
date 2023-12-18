@@ -1,0 +1,163 @@
+#modalOpenButton, #modalCloseButton {
+    cursor: pointer;
+}
+
+#modalContainer {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.5);
+    border-radius: 15px;
+}
+
+
+#modalContent {
+    position: absolute;
+    background-color: #ffffff;
+    width: 430px;
+    height: 730px;
+    padding: 15px;
+    border-radius: 15px;
+}
+
+#modalContainer.hidden {
+    display: none;
+}
+
+textarea {
+    width: 430px;
+    height: 700px;
+    resize: none;
+}
+
+table {
+    width: 430px;
+}
+
+#modalCloseButton {
+    position: relative;
+    left: 35%;
+    top: 50%;
+    background-color: aliceblue;
+    color: #1e6b7b;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 15px;
+}
+
+#complete {
+    position: relative;
+    left: 35%;
+    top: 50%;
+    background-color: #1e6b7b;
+    color: aliceblue;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 15px;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    display: flex;
+}
+
+.sidebar {
+    flex: 0 0 30%;
+    background-color: #ccc;
+}
+
+.content {
+    flex: 1;
+}
+
+.header {
+    height: 200px;
+}
+
+.image {
+    width: 100px;
+    height: 100px;
+    border-radius: 70%;
+    overflow: hidden;
+}
+.profile {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+div.image {
+    position: relative;
+    left: 43%;
+    right: 50%;
+    margin-top: 20px;
+}
+
+div.nickname {
+    position: relative;
+    left: 46%;
+    right: 50%;
+    margin-top: 10px;
+    border-radius: 15px;
+    background: #ccc;
+    width: 60px;
+    text-align: center;
+}
+#modalOpenButton {
+    position: relative;
+    left: 37%;
+    right: 50%;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 15px;
+    border: none;
+    background-color: aliceblue;
+    color: #1e6b7b;
+    width: 180px;
+    text-align: center;
+}
+
+#info > table {
+    width: 682px;
+}
+
+td.info {
+    border : 1px solid black;
+    border-collapse : collapse;"
+}
+#done {
+    position: relative;
+    left: 35%;
+    top: 50%;
+}
+
+#refuse {
+    position: relative;
+    left: 35%;
+    top: 50%;
+}
+
+.query {
+    font-weight: bold;
+    font-size: 20pt;
+}
+
+.writer {
+    font-weight: bold;
+    font-size: 12pt;
+}
+
+.answer {
+    font-size: 17pt;
+}
+
+#question table {
+    width: 130px;
+}
+
